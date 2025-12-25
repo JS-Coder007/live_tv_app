@@ -14,11 +14,14 @@ class ChannelProvider with ChangeNotifier {
   bool _isLoading = false;
   String _searchQuery = '';
   String _selectedCategory = 'All';
+  int _currentTabIndex = 0;
 
   List<Channel> get channels => _displayedChannels;
   List<Channel> get favorites => _favoriteChannels;
   Channel? get selectedChannel => _selectedChannel;
   bool get isLoading => _isLoading;
+  int get currentTabIndex => _currentTabIndex;
+  String get selectedCategory => _selectedCategory;
   List<String> get categories => ['All', ..._allChannels.map((c) => c.category).toSet().toList()..sort()];
 
   ChannelProvider() {
@@ -72,6 +75,11 @@ class ChannelProvider with ChangeNotifier {
   void filterByCategory(String category) {
     _selectedCategory = category;
     _filterChannels();
+  }
+
+  void setTabIndex(int index) {
+    _currentTabIndex = index;
+    notifyListeners();
   }
 
   void _filterChannels() {

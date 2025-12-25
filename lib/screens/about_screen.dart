@@ -11,16 +11,7 @@ class AboutScreen extends StatelessWidget {
     }
   }
 
-  Future<void> _launchEmail() async {
-    final Uri emailLaunchUri = Uri(
-      scheme: 'mailto',
-      path: 'jscoder@gmail.com',
-      query: 'subject=Live TV App Support',
-    );
-     if (!await launchUrl(emailLaunchUri)) {
-      throw Exception('Could not launch email');
-    }
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -46,17 +37,9 @@ class AboutScreen extends StatelessWidget {
             _buildInfoRow(
               context,
               icon: Icons.code,
-              label: 'GitHub',
-              value: 'github.com/JS-Coder007',
+              label: 'Developer',
+              value: 'GitHub',
               onTap: () => _launchUrl('https://github.com/JS-Coder007'),
-            ),
-            const SizedBox(height: 16),
-            _buildInfoRow(
-              context,
-              icon: Icons.email,
-              label: 'Contact',
-              value: 'jscoder@gmail.com',
-              onTap: _launchEmail,
             ),
             const SizedBox(height: 48),
             Center(

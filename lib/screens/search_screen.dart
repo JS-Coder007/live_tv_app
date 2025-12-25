@@ -45,14 +45,22 @@ class SearchScreen extends StatelessWidget {
                   itemCount: provider.categories.length,
                   itemBuilder: (context, index) {
                     final category = provider.categories[index];
-                    final isSelected = false; // TODO: Implement category selection state in provider properly to expose it
-                    // Actually, we need to access the selectedCategory from provider but I didn't expose a getter for it. 
-                    // Let's just use simple chips for now that call filterByCategory.
+                    final isSelected = provider.selectedCategory == category;
                     return Padding(
                       padding: const EdgeInsets.only(right: 8),
-                      child: ActionChip(
+                      child: FilterChip(
                         label: Text(category),
-                        onPressed: () => provider.filterByCategory(category),
+                        selected: isSelected,
+                        onSelected: (selected) {
+                          if (selected) {
+                            provider.filterByCategory(category);
+                          } else {
+                            // If unselecting, maybe go back to All? 
+                            // Usually chips act as radio buttons here.
+                            // Let's keep it simple: clicking another selects it.
+                            // Clicking 'All' selects 'All'.
+                          }
+                        },
                       ),
                     );
                   },

@@ -136,8 +136,8 @@ class _PlayerScreenState extends State<PlayerScreen> {
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                // Hint user to go to Search
-                // MainScreen handles tab switching, but we can just say "Go to Search"
+                // Switch to Search Tab (Index 1)
+                Provider.of<ChannelProvider>(context, listen: false).setTabIndex(1);
               }, 
               child: const Text('Go to Search')
             )

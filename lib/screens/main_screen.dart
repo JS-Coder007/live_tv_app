@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/channel_provider.dart';
 import 'player_screen.dart'; // Placeholder
 import 'search_screen.dart'; // Placeholder
 import 'favorites_screen.dart'; // Placeholder
@@ -12,8 +14,6 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _currentIndex = 0;
-  
   // Tabs
   // 0: Player (Currently Watching)
   // 1: Search
@@ -27,6 +27,9 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // Watch tab index from provider
+    final currentIndex = context.watch<ChannelProvider>().currentTabIndex;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Live TV'),
@@ -43,15 +46,13 @@ class _MainScreenState extends State<MainScreen> {
         ],
       ),
       body: IndexedStack(
-        index: _currentIndex,
+        index: currentIndex,
         children: _screens,
       ),
       bottomNavigationBar: NavigationBar(
-        selectedIndex: _currentIndex,
+        selectedIndex: currentIndex,
         onDestinationSelected: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
+          context.read<ChannelProvider>().setTabIndex(index);
         },
         destinations: const [
           NavigationDestination(

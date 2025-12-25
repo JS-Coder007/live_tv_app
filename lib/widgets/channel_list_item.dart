@@ -68,15 +68,9 @@ class ChannelListItem extends StatelessWidget {
       ),
       onTap: () {
         provider.selectChannel(channel);
-        ScaffoldMessenger.of(context).showSnackBar(
-           SnackBar(content: Text('Playing ${channel.name}... Go to "Watching" tab.')),
-        );
-        // Ideally we switch tab here. 
-        // We can do `Navigation.of(context). ...` if we had a proper route.
-        // Since we are using IndexedStack in MainScreen, we can find the ancestor State.
-        final mainScreenState = context.findAncestorStateOfType<State>();
-        // Being lazy/robustless: Let's not depend on ancestor state complexity if not needed.
-        // The SnackBar instruction is okay for MVP, but better if we auto-switch.
+        provider.setTabIndex(0); // Switch to Watching tab
+        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        // Optional: show snackbar if needed, but switching is clear enough
       },
     );
   }

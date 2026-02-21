@@ -1,5 +1,5 @@
 # live_tv_app
-Watch all TV channels for free
+Watch all TV channels for free(For Android)
 
 # Flutter IPTV Player
 

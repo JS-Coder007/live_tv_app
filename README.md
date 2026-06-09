@@ -33,7 +33,7 @@ A Flutter mobile IPTV player that lets users load the channel list, and plays st
 ## 🛠️ Getting Started
 
 ### Prerequisites
-- Flutter SDK installed
+- Flutter SDK - installed
 - Android Studio / VS Code
 - Android device/emulator (and/or iOS device/simulator)
 

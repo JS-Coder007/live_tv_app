@@ -7,7 +7,7 @@ A Flutter mobile IPTV player that lets users load the channel list, and plays st
 
 > ⚠️ Disclaimer: This app does **not** provide or host any video content.  
 > The sample playlists mentioned below come from **iptv-org/iptv**. [1](https://github.com/iptv-org/iptv)[3](https://deepwiki.com/iptv-org/iptv/5-user-guide)
-
+> Requires internet Connection
 ---
 
 ## ✨ Features
